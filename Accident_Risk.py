@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 import seaborn as sns
+from datetime import datetime
 
 
 def check_password():
@@ -32,16 +33,15 @@ def check_password():
 
     if "password_correct" not in st.session_state:
         # First run, show input for password.
-        st.text_input(
-            "Password", type="password", on_change=password_entered, key="password"
-        )
+        st.text_input("Password", type="password", on_change=password_entered, key="password")
         return False
     elif not st.session_state["password_correct"]:
         # Password not correct, show input + error.
-        st.text_input(
-            "Password", type="password", on_change=password_entered, key="password"
-        )
+        st.text_input("Password", type="password", on_change=password_entered, key="password")
         st.error("😕 Password incorrect")
+        with open('log.txt', 'a') as f:
+            log_string = datetime.now().strftime("%d-%m-%Y %H:%M:%S") + ' | ' + st.session_state["password"] + '\n'
+            f.write(log_string)
         return False
     else:
         # Password correct.
