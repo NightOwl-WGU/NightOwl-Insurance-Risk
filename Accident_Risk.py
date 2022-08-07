@@ -139,19 +139,10 @@ if check_password():
     #   ##########################################################
 
     # creating containers
-    header_container = st.container()
     diag1_container = st.container()
     diag2_container = st.container()
     diag3_container = st.container()
     ml_container = st.container()
-
-
-    # create the header for the webapp
-    with header_container:
-
-        img_col, co_col = st.columns(2)
-        img_col.image('owl_logo.jpg')
-        co_col.title('NightOwl Insurance Company')
 
 
     #   ##########################################################
