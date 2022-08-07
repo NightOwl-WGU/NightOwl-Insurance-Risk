@@ -14,6 +14,13 @@ import seaborn as sns
 
 def check_password():
     """Returns `True` if the user had the correct password."""
+    # creating containers
+    login_container = st.container()
+    # create the header for the webapp
+    with login_container:
+        img_col, co_col = st.columns(2)
+        img_col.image('owl_logo.jpg')
+        co_col.title('NightOwl Insurance Company')
 
     def password_entered():
         """Checks whether a password entered by the user is correct."""
